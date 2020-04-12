@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       //  navigate() method help us to route to a specific page.
       //  navigate() method accept an array and the first element inside this array 
       //  the page we want to navigate. We can pass parameter along with router.
-      this.router.navigate(['welcome']);
+      this.router.navigate(['welcome', this.username]);
 
       this.invalidLogin = false ;
     } else {
