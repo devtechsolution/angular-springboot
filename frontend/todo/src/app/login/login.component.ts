@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HardcodedAuthenticationService } from '../service/hardcoded-authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -22,14 +23,15 @@ export class LoginComponent implements OnInit {
       that parameter would be available as a member variable 
   */
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private hardcodedAuthenticationService: HardcodedAuthenticationService) { }
 
   ngOnInit() {
   }
 
   handleLogin() {
     // console.log(this.username);
-    if (this.username === 'devtechsolution' && this.password === 'Rama') {
+    // if (this.username === 'devtechsolution' && this.password === 'Rama') {
+      if (this.hardcodedAuthenticationService.authenticate(this.username, this.password)) {
       //  Redirect to Welcome Page using navigate() method of Router.
       //  navigate() method help us to route to a specific page.
       //  navigate() method accept an array and the first element inside this array 
