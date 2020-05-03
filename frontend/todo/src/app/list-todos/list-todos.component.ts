@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoDataService } from '../service/data/todo-data.service';
+import { Router } from '@angular/router';
 
 //  Future
 //  -No Navigation Menu and Footer
@@ -43,7 +44,8 @@ export class ListTodosComponent implements OnInit {
   //   description: 'Learn Angula'
   // };
 
-  constructor(private todoService: TodoDataService) { }
+  constructor(private todoService: TodoDataService,
+    private router: Router) { }
 
   ngOnInit() {
     this.refreshTodos();
@@ -68,5 +70,10 @@ export class ListTodosComponent implements OnInit {
        }
      );
   }
+
+  updateTodo(id) {
+    console.log(`Update todos ${id}`);
+    this.router.navigate(['todos', id]);
+ }
 
 }
