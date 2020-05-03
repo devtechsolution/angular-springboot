@@ -1,4 +1,4 @@
 server:
   port: 8081
-spring:  security:    user:      name: devtechsoution
+spring:  security:    user:      name: devtechsolution
       password: Rama
