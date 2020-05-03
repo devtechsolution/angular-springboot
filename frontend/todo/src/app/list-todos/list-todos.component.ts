@@ -26,7 +26,8 @@ export class Todo {
 })
 export class ListTodosComponent implements OnInit {
 
-  todos: Todo[]
+  todos: Todo[] ;
+  message: string;
   // = [
   //   new Todo(1, 'Learn Angular', false, new Date()),
   //   new Todo(1, 'Learn Angula Fullstack', false, new Date()),
@@ -45,12 +46,27 @@ export class ListTodosComponent implements OnInit {
   constructor(private todoService: TodoDataService) { }
 
   ngOnInit() {
+    this.refreshTodos();
+  }
+
+  refreshTodos(){
     this.todoService.retrieveAllTodos('devtechsolution').subscribe(
       response => {
         console.log(response);
         this.todos = response;
       }
-    )
+    );
+  }
+
+  deleteTodo(id) {
+     console.log(`delete todos ${id}`);
+     this.todoService.deleteTodo('devtechsolution', id).subscribe(
+       response => {
+         console.log(response);
+         this.message = `Delete of Todo ${id} Successful!`;
+         this.refreshTodos();
+       }
+     );
   }
 
 }
