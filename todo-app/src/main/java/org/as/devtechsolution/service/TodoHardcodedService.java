@@ -12,6 +12,8 @@ public interface TodoHardcodedService {
 	
 	public Todo findById(long id);
 	
+	public Todo save(Todo todo);
+	
 	
 
 }
